@@ -59,7 +59,7 @@ Once you've installed the module, you will have access to a command called `Get-
 
 `Get-DigitalObjects` requires two things to start downloading objects:
 
-1. A CSV exported from AtoM. This CSV must have a column named `digitalObjectURI` or `digitalObjectPath` with URLs to digital objects.
+1. A CSV exported from AtoM. This CSV must have a column named `digitalObjectURI`.
 2. The base URL to your AtoM instance.
 
 Let's assume you have a properly formatted CSV exported from AtoM at `C:\Users\you\digitalObjects.csv`, and your AtoM is accessible at `https://youratom.com`. Then, you can download the files in the CSV with:

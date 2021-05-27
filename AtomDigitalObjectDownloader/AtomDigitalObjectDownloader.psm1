@@ -18,14 +18,14 @@ Function Get-DigitalObjects {
 
     .DESCRIPTION
 
-    Downloads any digital object uploaded to an AtoM archive using a CSV. The CSV should have either
-    a digitalObjectURI or digitalObjectPath column containing one or more URIs to digital objects
+    Downloads any digital object uploaded to an AtoM archive using a CSV. The CSV should have a
+    column named digitalObjectURI containing one or more URIs to digital objects
     existing in AtoM. Ideally, the CSV will be one imported from AtoM itself, so as to be more sure
     that there are no errors with the links.
 
     .PARAMETER CsvFile
 
-    A path to a CSV file containing either a digitalObjectURI or digitalObjectPath column
+    A path to a CSV file containing a digitalObjectURI column
 
     .PARAMETER DestinationFolder
 
@@ -156,6 +156,10 @@ Function Get-DigitalObjects {
     }
     Catch [UriLoadException] {
         Write-Host "`nIssue with loading URIs from CSV:" -ForegroundColor Red
+        Write-Host "$_" -ForegroundColor Red
+    }
+    Catch [CsvReadException] {
+        Write-Host "`nIssue with reading CSV file:" -ForegroundColor Red
         Write-Host "$_" -ForegroundColor Red
     }
     Catch [System.Management.Automation.RuntimeException] {
